@@ -1,0 +1,86 @@
+{
+    "services": [
+        {
+            "id": "1",
+            "title": "Full-Stack Web Development",
+            "description": "Building production-grade web applications from the ground up — frontend to backend, database to deployment.",
+            "icon": "CodeBracketIcon",
+            "tags": [
+                "React",
+                "Next.js",
+                "Node.js"
+            ]
+        },
+        {
+            "id": "2",
+            "title": "AI-Powered Products",
+            "description": "Integrating LLMs, intelligent automation, and AI-driven features to build smarter, faster applications.",
+            "icon": "SparklesIcon",
+            "tags": [
+                "OpenAI",
+                "LLMs",
+                "Automation"
+            ]
+        },
+        {
+            "id": "3",
+            "title": "Mobile Development",
+            "description": "Cross-platform mobile applications with native performance, intuitive UX, and real-time capabilities.",
+            "icon": "DevicePhoneMobileIcon",
+            "tags": [
+                "React Native",
+                "Expo",
+                "Firebase"
+            ]
+        },
+        {
+            "id": "4",
+            "title": "System Architecture",
+            "description": "Designing scalable backend systems, APIs, and cloud infrastructure built for reliability and growth.",
+            "icon": "CpuChipIcon",
+            "tags": [
+                "PostgreSQL",
+                "AWS",
+                "REST / GraphQL"
+            ]
+        }
+    ],
+    "approach": [
+        {
+            "number": "01",
+            "title": "Identify the Problem",
+            "description": "Researching the space, understanding user pain points, and validating the idea before writing a single line."
+        },
+        {
+            "number": "02",
+            "title": "Design & Prototype",
+            "description": "Rapid UI prototyping with a focus on clarity, flow, and aesthetics that match the product vision."
+        },
+        {
+            "number": "03",
+            "title": "Build & Ship",
+            "description": "Clean, modular code with AI-assisted development — moving fast without cutting corners."
+        },
+        {
+            "number": "04",
+            "title": "Iterate & Scale",
+            "description": "Monitoring real usage, gathering feedback, and continuously improving based on data."
+        }
+    ],
+    "techStack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Node.js",
+        "PostgreSQL",
+        "Python",
+        "Scikit-Learn",
+        "OpenAI API",
+        "Framer Motion",
+        "Vercel",
+        "Git"
+    ],
+    "heading": "Services & Expertise",
+    "subtitle": "I design, build, and ship complete products — from idea to deployment. Every project is a solo effort, powered by modern tooling and AI."
+}

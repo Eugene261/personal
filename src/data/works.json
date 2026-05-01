@@ -1,0 +1,41 @@
+[
+    {
+        "id": "1",
+        "title": "E-commerce Platform Redesign",
+        "category": "Web Development",
+        "description": "Led the complete frontend overhaul of a luxury retail platform, implementing server-side rendering with Next.js and Stripe integration for seamless checkout.",
+        "year": "2025",
+        "tech": [
+            "Next.js",
+            "Stripe",
+            "Tailwind CSS"
+        ],
+        "image": "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+        "id": "2",
+        "title": "Analytics Dashboard",
+        "category": "UI/UX Engineering",
+        "description": "Designed and built a high-performance real-time analytics dashboard for enterprise clients, processing 2M+ data points daily with sub-200ms render times.",
+        "year": "2024",
+        "tech": [
+            "React",
+            "D3.js",
+            "PostgreSQL"
+        ],
+        "image": "https://images.unsplash.com/photo-1551288049-bbda38a594a1?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+        "id": "3",
+        "title": "Digital Wallet Application",
+        "category": "Mobile Development",
+        "description": "Engineered a secure, intuitive mobile application for managing digital assets with biometric auth, real-time price feeds, and encrypted local storage.",
+        "year": "2024",
+        "tech": [
+            "React Native",
+            "Node.js",
+            "Firebase"
+        ],
+        "image": "https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&q=80&w=800"
+    }
+]

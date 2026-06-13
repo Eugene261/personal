@@ -35,17 +35,13 @@ export async function POST(request: Request) {
             console.warn("Firebase Storage failed or not configured. Falling back to local upload:", storageError);
         }
 
-        // 2. Local fallback if Firebase Storage fails/is not configured
-        const publicDir = path.join(process.cwd(), "public", "images");
-        if (!fs.existsSync(publicDir)) {
-            fs.mkdirSync(publicDir, { recursive: true });
-        }
-
-        const filePath = path.join(publicDir, filename);
-        fs.writeFileSync(filePath, buffer);
-
-        const localUrl = `/images/${filename}`;
-        return NextResponse.json({ url: localUrl });
+        // 2. Fallback to Base64 data URL if Firebase Storage fails/is not configured.
+        // In read-only, ephemeral serverless environments like Vercel, writing files to the local disk
+        // does not persist. Converting the image to a Base64 data URL allows it to be saved directly
+        // in Firestore, making it work reliably in production.
+        const base64Content = buffer.toString("base64");
+        const dataUrl = `data:${file.type || "image/png"};base64,${base64Content}`;
+        return NextResponse.json({ url: dataUrl });
 
     } catch (error: any) {
         console.error("Upload error:", error);

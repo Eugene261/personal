@@ -126,14 +126,14 @@ export default async function Home() {
         </h2>
         <div className="space-y-8">
           {sortedWorks.map((work) => (
-            <div key={work.id ?? work.title} className="flex flex-col sm:flex-row gap-5 items-start">
+            <div key={work.id ?? work.title} className="flex flex-row gap-4 sm:gap-5 items-start">
               {work.image && (
                 work.url ? (
                   <a
                     href={work.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full sm:w-36 aspect-[16/10] sm:h-[90px] rounded-xl overflow-hidden shrink-0 border border-neutral-200/50 dark:border-neutral-800/50 bg-neutral-50 dark:bg-neutral-900/50 shadow-sm relative group block"
+                    className="w-24 sm:w-36 aspect-[16/10] sm:h-[90px] rounded-xl overflow-hidden shrink-0 border border-neutral-200/50 dark:border-neutral-800/50 bg-neutral-50 dark:bg-neutral-900/50 shadow-sm relative group block"
                   >
                     <img
                       src={work.image}
@@ -143,7 +143,7 @@ export default async function Home() {
                     />
                   </a>
                 ) : (
-                  <div className="w-full sm:w-36 aspect-[16/10] sm:h-[90px] rounded-xl overflow-hidden shrink-0 border border-neutral-200/50 dark:border-neutral-800/50 bg-neutral-50 dark:bg-neutral-900/50 shadow-sm relative group">
+                  <div className="w-24 sm:w-36 aspect-[16/10] sm:h-[90px] rounded-xl overflow-hidden shrink-0 border border-neutral-200/50 dark:border-neutral-800/50 bg-neutral-50 dark:bg-neutral-900/50 shadow-sm relative group">
                     <img
                       src={work.image}
                       alt={work.title}

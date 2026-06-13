@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   },
   description:
     "Self-taught Full-Stack Engineer and founder based in Accra, Ghana. Building products that matter — from social commerce to AI tools.",
+  icons: {
+    icon: "/favicon.ico?v=2",
+    shortcut: "/favicon.ico?v=2",
+    apple: "/icon.png?v=2",
+  },
 };
 
 export default function RootLayout({

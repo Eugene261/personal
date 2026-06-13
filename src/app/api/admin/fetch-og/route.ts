@@ -4,8 +4,10 @@ import { verifyAuth, unauthorized } from "@/lib/auth";
 export async function POST(request: Request) {
     if (!(await verifyAuth())) return unauthorized();
 
+    let url = "";
     try {
-        const { url } = await request.json();
+        const body = await request.json().catch(() => ({}));
+        url = body?.url || "";
         if (!url) {
             return NextResponse.json({ error: "URL is required" }, { status: 400 });
         }
@@ -104,6 +106,7 @@ export async function POST(request: Request) {
         console.error("Critical OG fetch error:", error);
         // Fallback to screenshot even if the whole handler throws an exception
         try {
+            if (!url) throw new Error("URL is empty");
             const target = url.trim();
             const normalizedTarget = /^https?:\/\//i.test(target) ? target : `https://${target}`;
             const fallbackUrl = `https://image.thum.io/get/width/1280/crop/800/${normalizedTarget}`;

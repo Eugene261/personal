@@ -154,7 +154,16 @@ export default function Projects({ data }: { data?: any[] }) {
                                                             const icon = getTechIcon(t);
                                                             return (
                                                                 <span key={t} className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border border-neutral-200 text-neutral-500 bg-white/50 backdrop-blur-sm shadow-sm hover:shadow-md transition-all">
-                                                                    {icon && <img src={icon} alt={t} className="w-3 h-3 object-contain" />}
+                                                                    {icon && (
+                                                                        <img
+                                                                            src={icon}
+                                                                            alt={t}
+                                                                            className="w-3 h-3 object-contain"
+                                                                            onError={(e) => {
+                                                                                (e.target as HTMLImageElement).src = "/tech-stack/Devicon.png";
+                                                                            }}
+                                                                        />
+                                                                    )}
                                                                     {t}
                                                                 </span>
                                                             );
@@ -194,7 +203,16 @@ export default function Projects({ data }: { data?: any[] }) {
                                                     const icon = getTechIcon(t);
                                                     return (
                                                         <span key={t} className="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-widest px-2 py-1 rounded-full border border-neutral-200 text-neutral-400 whitespace-nowrap">
-                                                            {icon && <img src={icon} alt={t} className="w-2.5 h-2.5 object-contain" />}
+                                                            {icon && (
+                                                                <img
+                                                                    src={icon}
+                                                                    alt={t}
+                                                                    className="w-2.5 h-2.5 object-contain"
+                                                                    onError={(e) => {
+                                                                        (e.target as HTMLImageElement).src = "/tech-stack/Devicon.png";
+                                                                    }}
+                                                                />
+                                                            )}
                                                             {t}
                                                         </span>
                                                     );

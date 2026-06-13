@@ -69,9 +69,13 @@ export default function AboutManager() {
                 setEditingEdu(null);
                 setEditingFact(null);
                 fetchAbout(); // Reload
+            } else {
+                const data = await res.json().catch(() => ({}));
+                alert(`Save failed: ${data.error || res.statusText}`);
             }
-        } catch (error) {
+        } catch (error: any) {
             console.error("Failed to save", error);
+            alert(`Save failed: ${error.message || error}`);
         } finally {
             setSaving(false);
         }

@@ -49,7 +49,7 @@ export default function Footer() {
         ))}
       </ul>
       <p className="mt-8 text-neutral-600 dark:text-neutral-300" suppressHydrationWarning>
-        © {new Date().getFullYear()} MIT Licensed
+        © {new Date().getFullYear()}
       </p>
     </footer>
   );

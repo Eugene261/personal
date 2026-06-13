@@ -139,7 +139,16 @@ export default function Services({ data }: { data?: any }) {
                             const icon = getTechIcon(tech);
                             return (
                                 <span key={tech} className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-neutral-200/60 bg-white text-sm font-semibold text-neutral-600 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
-                                    {icon && <img src={icon} alt={tech} className="w-5 h-5 object-contain" />}
+                                    {icon && (
+                                        <img
+                                            src={icon}
+                                            alt={tech}
+                                            className="w-5 h-5 object-contain"
+                                            onError={(e) => {
+                                                (e.target as HTMLImageElement).src = "/tech-stack/Devicon.png";
+                                            }}
+                                        />
+                                    )}
                                     {tech}
                                 </span>
                             );

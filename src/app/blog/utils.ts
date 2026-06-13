@@ -47,27 +47,5 @@ function getMDXData(dir: string) {
 export function getBlogPosts() {
   return getMDXData(path.join(process.cwd(), "src", "app", "blog", "posts"));
 }
-
-export function formatDate(date: string, includeRelative = false) {
-  const currentDate = new Date();
-  const normalized = date.includes("T") ? date : `${date}T00:00:00`;
-  const targetDate = new Date(normalized);
-
-  const yearsAgo = currentDate.getFullYear() - targetDate.getFullYear();
-  const monthsAgo = currentDate.getMonth() - targetDate.getMonth();
-  const daysAgo = currentDate.getDate() - targetDate.getDate();
-
-  let formattedDate = "Today";
-  if (yearsAgo > 0) formattedDate = `${yearsAgo}y ago`;
-  else if (monthsAgo > 0) formattedDate = `${monthsAgo}mo ago`;
-  else if (daysAgo > 0) formattedDate = `${daysAgo}d ago`;
-
-  const fullDate = targetDate.toLocaleString("en-us", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
-
-  return includeRelative ? `${fullDate} (${formattedDate})` : fullDate;
-}
+export { formatDate } from "./formatDate";
 

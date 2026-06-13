@@ -30,6 +30,18 @@ export default async function AboutPage() {
                 <dd className="text-sm text-neutral-900 dark:text-neutral-100">{item.value}</dd>
               </div>
             ))}
+            <div className="flex items-baseline justify-between gap-4 border-t border-neutral-100 dark:border-neutral-900 pt-2 mt-1">
+              <dt className="text-sm text-neutral-600 dark:text-neutral-400">X (Twitter)</dt>
+              <dd className="text-sm font-medium text-neutral-900 dark:text-neutral-100">
+                <a href="https://x.com/YGene_" target="_blank" rel="noopener noreferrer" className="hover:underline">@YGene_ ↗</a>
+              </dd>
+            </div>
+            <div className="flex items-baseline justify-between gap-4">
+              <dt className="text-sm text-neutral-600 dark:text-neutral-400">LinkedIn</dt>
+              <dd className="text-sm font-medium text-neutral-900 dark:text-neutral-100">
+                <a href="https://www.linkedin.com/in/eugene-opoku-243601392" target="_blank" rel="noopener noreferrer" className="hover:underline">Eugene Opoku ↗</a>
+              </dd>
+            </div>
           </dl>
         </div>
       )}

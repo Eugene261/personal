@@ -165,7 +165,16 @@ export default function ServicesManager() {
                             const icon = getTechIcon(tech);
                             return (
                                 <div key={`${tech}-${index}`} className="flex items-center gap-3 px-4 py-2 bg-neutral-900 border border-neutral-800 rounded-full group">
-                                    {icon && <img src={icon} alt="" className="w-4 h-4 object-contain" />}
+                                    {icon && (
+                                        <img
+                                            src={icon}
+                                            alt=""
+                                            className="w-4 h-4 object-contain"
+                                            onError={(e) => {
+                                                (e.target as HTMLImageElement).src = "/tech-stack/Devicon.png";
+                                            }}
+                                        />
+                                    )}
                                     <span className="text-sm font-medium text-white">{tech}</span>
                                     <button
                                         onClick={() => {

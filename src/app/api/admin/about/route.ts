@@ -21,7 +21,10 @@ export async function POST(request: Request) {
 
     try {
         const data = await request.json();
-        await setDocument(COLLECTION, DOCUMENT, data);
+        const success = await setDocument(COLLECTION, DOCUMENT, data);
+        if (!success) {
+            return NextResponse.json({ error: "Failed to write to database" }, { status: 500 });
+        }
         return NextResponse.json({ success: true });
     } catch (error) {
         return NextResponse.json({ error: "Failed to save about config" }, { status: 500 });

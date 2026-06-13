@@ -1,22 +1,31 @@
 {
+    "quote": "Those who achieve great things, those who lead, create and inspire do not depend on calm seas — they learn to steer even in the storm. When they face loss or rejection they do not crumble, they adjust their sails. When they encounter betrayal or disappointment, they do not lash out — they learn, grow, and they move forward with greater strength.",
+    "profileImage": "/images/eugene.jpg",
+    "profileImages": [
+        "/images/eugene.jpg",
+        "/images/photo_2_2026-06-13_11-02-57.jpg",
+        "/images/photo_3_2026-06-13_11-02-57.jpg",
+        "/images/photo_4_2026-06-13_11-02-57.jpg"
+    ],
     "hero": {
         "greeting": "Hi, I'm",
         "name": "Eugene",
-        "headline": "Engineering software solutions that drive real impact.",
-        "subtitle": "Self-taught Full-Stack Engineer building production-grade web and mobile applications, powered by AI-driven development."
+        "role": "Founder / Full-Stack Engineer",
+        "bio": "We learn to steer even in the storm.\nCEO & Founder at For You Commerce. Building the future of feed-based commerce."
     },
+
     "stats": [
         {
-            "label": "Projects Shipped",
-            "value": "20+"
+            "label": "Products Shipped",
+            "value": "6+"
         },
         {
             "label": "Technologies",
             "value": "15+"
         },
         {
-            "label": "Lines of Code",
-            "value": "100K+"
+            "label": "Years Building",
+            "value": "6+"
         },
         {
             "label": "AI Integrations",
@@ -25,13 +34,13 @@
     ],
     "aboutTeaser": {
         "tagline": "I BUILD THINGS THAT MATTER.",
-        "body": "Self-taught Full-Stack Engineer with a BSc in Education. I design, build, and ship complete products solo — leveraging AI to move at the speed of a team.",
-        "bodySecondary": "From social commerce platforms to real-time mobile apps, I take ideas from zero to production with a deep focus on quality, performance, and user experience.",
-        "quote": "The best code is invisible — it just makes things work beautifully.",
+        "body": "Self-taught Full-Stack Engineer from Accra, Ghana with a BA in Education, Psychology and Information Studies. I design, build, and ship complete products solo — leveraging AI to move at the speed of a team.",
+        "bodySecondary": "From social commerce platforms to AI participation assistants to civic tech portals, I take ideas from zero to production. My mission: making African developers legible to global capital and helping them scale products internationally.",
+        "quote": "Those who achieve great things do not depend on calm seas — they learn to steer even in the storm.",
         "highlights": [
             {
-                "label": "Projects Shipped",
-                "value": "20+"
+                "label": "Products Shipped",
+                "value": "6+"
             },
             {
                 "label": "Technologies",
@@ -46,58 +55,71 @@
     "experiences": [
         {
             "id": "1",
-            "title": "Full-Stack Web Application",
-            "project": "Social Commerce Platform",
-            "type": "Solo Project",
+            "title": "Founder, CEO & Full-Stack Engineer",
+            "project": "For You Commerce",
+            "type": "Startup",
             "period": "2024 — Present",
             "description": [
-                "Designed and built a full-stack social commerce platform from scratch using Next.js, Node.js, and PostgreSQL, handling real-time features and payment processing.",
-                "Integrated AI-powered product recommendations and automated content moderation using OpenAI APIs.",
-                "Deployed and maintained production infrastructure on Vercel and AWS, serving active users with 99.9% uptime."
+                "Founded and built a social commerce platform making commerce in the era of feeds trustworthy, scam-free, and seamless.",
+                "Designed and developed the full-stack application from scratch using Next.js, Node.js, and PostgreSQL, handling real-time features and payment processing.",
+                "Leading product strategy, engineering, and growth as a solo founder shipping production-grade software."
             ],
             "icon": "🚀"
         },
         {
             "id": "2",
-            "title": "Mobile Application",
-            "project": "Real-Time Messaging App",
-            "type": "Solo Project",
-            "period": "2023 — 2024",
+            "title": "Founder & Builder",
+            "project": "SaaS Afric",
+            "type": "Startup",
+            "period": "2024 — Present",
             "description": [
-                "Built a cross-platform messaging application using React Native and Firebase, featuring real-time chat, media sharing, and push notifications.",
-                "Implemented end-to-end encryption and optimized for performance, achieving smooth 60fps scrolling across both iOS and Android.",
-                "Designed the complete UI/UX from wireframes to production, focusing on accessibility and intuitive navigation."
+                "Building infrastructure for African SaaS founders and developers to scale their products internationally.",
+                "Creating tools and resources that make African developers legible to global capital.",
+                "Developing a platform ecosystem to support the growing African SaaS landscape."
             ],
-            "icon": "📱"
+            "icon": "🌍"
         },
         {
             "id": "3",
-            "title": "AI-Powered Tool",
-            "project": "Intelligent Automation Suite",
-            "type": "Solo Project",
-            "period": "2023",
+            "title": "Data Mining Specialist",
+            "project": "Blask",
+            "type": "Contract",
+            "period": "2024",
             "description": [
-                "Developed an AI-powered automation suite that leverages LLMs to streamline repetitive workflows, reducing task completion time by 60%.",
-                "Built custom integrations with third-party APIs and designed a modular plugin architecture for extensibility.",
-                "Open-sourced key components, receiving positive community feedback and contributions."
+                "Specialized in AI training data mining, preparing and curating high-quality datasets for machine learning models.",
+                "Applied rigorous data analysis and quality assurance processes to ensure training data integrity.",
+                "Contributed to the development pipeline for AI systems requiring structured, reliable input data."
             ],
-            "icon": "🤖"
+            "icon": "⛏️"
+        },
+        {
+            "id": "4",
+            "title": "Independent Builder",
+            "project": "Solo Projects",
+            "type": "Self-Directed",
+            "period": "2020 — Present",
+            "description": [
+                "Self-taught development through YouTube, W3Schools, and Udemy — then applied knowledge to ship real-world products.",
+                "Built and shipped multiple projects including Audience (AI participation assistant), Nwoma (academic tool), Betify (MyHuzl), and Nita Stop The Bill.",
+                "Mastered building with AI, using modern tools to architect, build, and deploy full-stack applications at startup speed."
+            ],
+            "icon": "🛠️"
         }
     ],
     "education": [
         {
             "id": "1",
-            "degree": "BSc Education",
-            "school": "University of Technology",
+            "degree": "BA Education, Psychology & Information Studies",
+            "school": "University of Education",
             "period": "2017 — 2021",
-            "details": "Graduated with honors. Developed strong analytical, research, and communication skills that inform a thoughtful, user-first approach to software engineering."
+            "details": "Majored in Education. Developed strong analytical, research, and communication skills that inform a thoughtful, user-first approach to software engineering and product design."
         },
         {
             "id": "2",
             "degree": "Self-Taught Software Engineer",
-            "school": "Continuous Learning",
+            "school": "YouTube · W3Schools · Udemy",
             "period": "2020 — Present",
-            "details": "Built expertise in full-stack development through rigorous self-study, open-source contributions, and shipping real-world products. Technologies include React, Next.js, TypeScript, Node.js, and PostgreSQL."
+            "details": "Built expertise in full-stack development through rigorous self-study and shipping real-world products. Mastered building with AI. Technologies include React, Next.js, TypeScript, Node.js, Python, and PostgreSQL."
         }
     ],
     "philosophy": [
@@ -148,16 +170,20 @@
     },
     "quickFacts": [
         {
+            "label": "Location",
+            "value": "Accra, Ghana"
+        },
+        {
             "label": "Status",
-            "value": "Solo Builder"
+            "value": "Founder & Builder"
         },
         {
             "label": "Specialty",
-            "value": "Full-Stack + AI + ML"
+            "value": "Full-Stack + AI"
         },
         {
             "label": "Education",
-            "value": "BSc Education"
+            "value": "BA Education"
         },
         {
             "label": "Stack",
@@ -165,7 +191,7 @@
         },
         {
             "label": "Superpower",
-            "value": "AI-Assisted Dev"
+            "value": "AI-Driven Development"
         }
     ]
 }

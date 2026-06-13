@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+  --font-serif: var(--font-playfair), Georgia, serif;
+}
+
+
 ::selection {
   background-color: #47a3f3;
   color: #fefefe;

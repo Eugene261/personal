@@ -30,13 +30,15 @@ export default function AboutManager() {
     const [fullConfig, setFullConfig] = useState<any>(null);
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
+    const [uploadingImage, setUploadingImage] = useState(false);
 
-    const [activeSection, setActiveSection] = useState<"experiences" | "education" | "quickFacts">("experiences");
+    const [activeSection, setActiveSection] = useState<"profile" | "experiences" | "education" | "quickFacts">("profile");
 
     // Editing states
     const [editingExp, setEditingExp] = useState<Experience | null>(null);
     const [editingEdu, setEditingEdu] = useState<Education | null>(null);
     const [editingFact, setEditingFact] = useState<{ index: number, fact: QuickFact } | null>(null);
+
 
     useEffect(() => {
         fetchAbout();
@@ -74,6 +76,86 @@ export default function AboutManager() {
             setSaving(false);
         }
     };
+
+    const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        
+        const formData = new FormData();
+        formData.append("file", file);
+        
+        setUploadingImage(true);
+        try {
+            const res = await fetch("/api/admin/upload", {
+                method: "POST",
+                body: formData,
+            });
+            if (res.ok) {
+                const data = await res.json().catch(() => ({}));
+                if (data.url) {
+                    const currentImages = Array.isArray(fullConfig?.profileImages)
+                        ? [...fullConfig.profileImages]
+                        : (fullConfig?.profileImage ? [fullConfig.profileImage] : []);
+                    
+                    const updatedImages = [...currentImages, data.url];
+                    const updated = {
+                        ...fullConfig,
+                        profileImages: updatedImages,
+                        profileImage: updatedImages[0] || ""
+                    };
+                    setFullConfig(updated);
+                    await handleSave(updated);
+                } else {
+                    alert(`Upload failed: ${data.error || "No URL returned from server"}`);
+                }
+            } else {
+                const data = await res.json().catch(() => ({}));
+                alert(`Upload failed: ${data.error || res.statusText}`);
+            }
+        } catch (err: any) {
+            console.error("Upload error:", err);
+            alert(`Upload failed: ${err.message || err}`);
+        } finally {
+            setUploadingImage(false);
+        }
+    };
+
+    const handleDeleteImage = async (indexToDelete: number) => {
+        const currentImages = Array.isArray(fullConfig?.profileImages)
+            ? [...fullConfig.profileImages]
+            : (fullConfig?.profileImage ? [fullConfig.profileImage] : []);
+        
+        const updatedImages = currentImages.filter((_, idx) => idx !== indexToDelete);
+        const updated = {
+            ...fullConfig,
+            profileImages: updatedImages,
+            profileImage: updatedImages[0] || ""
+        };
+        setFullConfig(updated);
+        await handleSave(updated);
+    };
+
+    const handleSetMainImage = async (indexToMakeMain: number) => {
+        const currentImages = Array.isArray(fullConfig?.profileImages)
+            ? [...fullConfig.profileImages]
+            : (fullConfig?.profileImage ? [fullConfig.profileImage] : []);
+        
+        if (indexToMakeMain <= 0 || indexToMakeMain >= currentImages.length) return;
+        
+        const updatedImages = [
+            currentImages[indexToMakeMain],
+            ...currentImages.filter((_, idx) => idx !== indexToMakeMain)
+        ];
+        
+        const updated = {
+            ...fullConfig,
+            profileImages: updatedImages,
+            profileImage: updatedImages[0] || ""
+        };
+        setFullConfig(updated);
+        await handleSave(updated);
+    };
+
 
     const saveExperience = (e: React.FormEvent) => {
         e.preventDefault();
@@ -231,6 +313,12 @@ export default function AboutManager() {
             {/* Section tabs */}
             <div className="flex gap-2 sm:gap-4 overflow-x-auto whitespace-nowrap border-b border-neutral-800 pb-4 mb-8 no-scrollbar">
                 <button 
+                    onClick={() => setActiveSection("profile")}
+                    className={`px-4 py-2 text-sm font-bold rounded-lg transition-colors ${activeSection === 'profile' ? 'bg-emerald-900/40 text-emerald-400' : 'text-neutral-400 hover:text-white hover:bg-neutral-900'}`}
+                >
+                    Profile
+                </button>
+                <button 
                     onClick={() => setActiveSection("experiences")}
                     className={`px-4 py-2 text-sm font-bold rounded-lg transition-colors ${activeSection === 'experiences' ? 'bg-emerald-900/40 text-emerald-400' : 'text-neutral-400 hover:text-white hover:bg-neutral-900'}`}
                 >
@@ -249,6 +337,117 @@ export default function AboutManager() {
                     Quick Facts
                 </button>
             </div>
+
+            {activeSection === "profile" && (
+                <div className="space-y-6">
+                    <div>
+                        <h2 className="text-xl font-bold text-white mb-1">Profile Info</h2>
+                        <p className="text-sm text-neutral-500">Manage your homepage hero details and profile picture.</p>
+                    </div>
+
+                    <div className="space-y-4 bg-neutral-950/50 border border-neutral-800 rounded-xl p-6">
+                        <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 block">
+                            Profile Images (First image is the main photo)
+                        </span>
+                        
+                        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4">
+                            {/* Render existing images */}
+                            {((Array.isArray(fullConfig?.profileImages) && fullConfig.profileImages) || 
+                              (fullConfig?.profileImage ? [fullConfig.profileImage] : [])).map((imgUrl: string, idx: number) => (
+                                <div key={idx} className="relative group aspect-square rounded-2xl overflow-hidden border border-neutral-850 bg-neutral-900 shadow-inner">
+                                    <img src={imgUrl} alt={`Profile ${idx + 1}`} className="w-full h-full object-cover rounded-[14px]" />
+                                    
+                                    {/* Main Badge */}
+                                    {idx === 0 && (
+                                        <span className="absolute top-1.5 left-1.5 bg-emerald-500 text-black text-[9px] font-bold px-1.5 py-0.5 rounded-md shadow-md">
+                                            Main
+                                        </span>
+                                    )}
+
+                                    {/* Action Hover Overlay */}
+                                    <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-1.5 p-2">
+                                        {idx > 0 && (
+                                            <button 
+                                                type="button"
+                                                onClick={() => handleSetMainImage(idx)}
+                                                className="w-full text-[10px] font-bold bg-white text-black py-1 rounded-md hover:bg-neutral-200 transition-colors"
+                                            >
+                                                Make Main
+                                            </button>
+                                        )}
+                                        <button 
+                                            type="button"
+                                            onClick={() => handleDeleteImage(idx)}
+                                            className="w-full text-[10px] font-bold bg-red-600 text-white py-1 rounded-md hover:bg-red-500 transition-colors"
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            ))}
+
+                            {/* Upload card */}
+                            <label className={`relative aspect-square rounded-2xl border-2 border-dashed border-neutral-800 hover:border-emerald-500/50 transition-colors flex flex-col items-center justify-center cursor-pointer bg-neutral-950 ${uploadingImage ? 'pointer-events-none opacity-50' : ''}`}>
+                                {uploadingImage ? (
+                                    <ArrowPathIcon className="w-6 h-6 text-emerald-500 animate-spin" />
+                                ) : (
+                                    <>
+                                        <PlusIcon className="w-6 h-6 text-neutral-500 mb-1" />
+                                        <span className="text-[10px] text-neutral-500 font-bold uppercase tracking-wider">Add Photo</span>
+                                    </>
+                                )}
+                                <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" disabled={uploadingImage} />
+                            </label>
+                        </div>
+                    </div>
+
+                    <form onSubmit={(e) => {
+                        e.preventDefault();
+                        handleSave(fullConfig);
+                    }} className="space-y-5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div className="space-y-2">
+                                <label className="text-xs font-bold uppercase tracking-wider text-neutral-500">Name</label>
+                                <input 
+                                    required 
+                                    type="text" 
+                                    value={fullConfig?.hero?.name || ""} 
+                                    onChange={e => setFullConfig({ ...fullConfig, hero: { ...(fullConfig?.hero || {}), name: e.target.value } })} 
+                                    className="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-500" 
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-xs font-bold uppercase tracking-wider text-neutral-500">Role / Subtitle</label>
+                                <input 
+                                    required 
+                                    type="text" 
+                                    value={fullConfig?.hero?.role || ""} 
+                                    onChange={e => setFullConfig({ ...fullConfig, hero: { ...(fullConfig?.hero || {}), role: e.target.value } })} 
+                                    className="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-500" 
+                                />
+                            </div>
+                        </div>
+
+                        <div className="space-y-2">
+                            <label className="text-xs font-bold uppercase tracking-wider text-neutral-500">
+                                Bio (use &quot;steer even in the storm&quot; to link your resilience quote)
+                            </label>
+                            <textarea 
+                                required 
+                                rows={5} 
+                                value={fullConfig?.hero?.bio || ""} 
+                                onChange={e => setFullConfig({ ...fullConfig, hero: { ...(fullConfig?.hero || {}), bio: e.target.value } })} 
+                                className="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-500" 
+                            />
+                        </div>
+
+                        <button disabled={saving} type="submit" className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-6 rounded-lg flex items-center gap-2 mt-4 disabled:opacity-50">
+                            {saving ? <ArrowPathIcon className="w-5 h-5 animate-spin" /> : null}
+                            Save Profile
+                        </button>
+                    </form>
+                </div>
+            )}
 
             {activeSection === "experiences" && (
                 <>
@@ -351,3 +550,4 @@ export default function AboutManager() {
         </div>
     );
 }
+

@@ -24,7 +24,10 @@ export async function POST(request: Request) {
         // Assume 'id' is passed, or generate one if creating new item
         const id = data.id || Date.now().toString();
 
-        await setDocument(COLLECTION, id, { ...data, id });
+        const success = await setDocument(COLLECTION, id, { ...data, id });
+        if (!success) {
+            return NextResponse.json({ error: "Failed to write to database" }, { status: 500 });
+        }
         return NextResponse.json({ success: true, id });
     } catch (error) {
         return NextResponse.json({ error: "Failed to save work" }, { status: 500 });

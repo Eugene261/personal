@@ -1,4 +1,4 @@
-import Link from "next/link";
+import ContactChat from "@/components/ContactChat";
 
 export const metadata = {
   title: "Contact",
@@ -6,31 +6,18 @@ export const metadata = {
 };
 
 export default function ContactPage() {
-  const email = "eugeneopoku74@gmail.com";
-
   return (
-    <section>
-      <h1 className="title text-2xl font-semibold tracking-tighter">Contact</h1>
-      <p className="mt-4 text-neutral-700 dark:text-neutral-300">
-        The fastest way to reach me is email.
-      </p>
-
-      <div className="mt-8 space-y-3">
-        <a
-          className="inline-flex items-center rounded-md bg-neutral-900 text-white dark:bg-neutral-100 dark:text-black px-3 py-1.5 text-sm font-medium"
-          href={`mailto:${email}`}
-        >
-          {email}
-        </a>
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          Or browse the blog on{" "}
-          <Link className="underline underline-offset-4" href="/blog">
-            /blog
-          </Link>
-          .
+    <section className="flex flex-col gap-6">
+      <div>
+        <h1 className="title text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 lowercase">
+          contact
+        </h1>
+        <p className="text-xs font-mono text-neutral-400 dark:text-neutral-500 mt-1 uppercase tracking-widest">
+          Let&apos;s build something fun
         </p>
       </div>
+
+      <ContactChat />
     </section>
   );
 }
-

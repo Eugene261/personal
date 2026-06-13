@@ -1,54 +1,66 @@
 export const experiences = [
     {
-        title: "Full-Stack Web Application",
-        project: "Social Commerce Platform",
-        type: "Solo Project",
+        title: "Founder, CEO & Full-Stack Engineer",
+        project: "For You Commerce",
+        type: "Startup",
         period: "2024 — Present",
         description: [
-            "Designed and built a full-stack social commerce platform from scratch using Next.js, Node.js, and PostgreSQL, handling real-time features and payment processing.",
-            "Integrated AI-powered product recommendations and automated content moderation using OpenAI APIs.",
-            "Deployed and maintained production infrastructure on Vercel and AWS, serving active users with 99.9% uptime."
+            "Founded and built a social commerce platform making commerce in the era of feeds trustworthy, scam-free, and seamless.",
+            "Designed and developed the full-stack application from scratch using Next.js, Node.js, and PostgreSQL, handling real-time features and payment processing.",
+            "Leading product strategy, engineering, and growth as a solo founder shipping production-grade software."
         ],
         icon: "🚀"
     },
     {
-        title: "Mobile Application",
-        project: "Real-Time Messaging App",
-        type: "Solo Project",
-        period: "2023 — 2024",
+        title: "Founder & Builder",
+        project: "SaaS Afric",
+        type: "Startup",
+        period: "2024 — Present",
         description: [
-            "Built a cross-platform messaging application using React Native and Firebase, featuring real-time chat, media sharing, and push notifications.",
-            "Implemented end-to-end encryption and optimized for performance, achieving smooth 60fps scrolling across both iOS and Android.",
-            "Designed the complete UI/UX from wireframes to production, focusing on accessibility and intuitive navigation."
+            "Building infrastructure for African SaaS founders and developers to scale their products internationally.",
+            "Creating tools and resources that make African developers legible to global capital.",
+            "Developing a platform ecosystem to support the growing African SaaS landscape."
         ],
-        icon: "📱"
+        icon: "🌍"
     },
     {
-        title: "AI-Powered Tool",
-        project: "Intelligent Automation Suite",
-        type: "Solo Project",
-        period: "2023",
+        title: "Data Mining Specialist",
+        project: "Blask",
+        type: "Contract",
+        period: "2024",
         description: [
-            "Developed an AI-powered automation suite that leverages LLMs to streamline repetitive workflows, reducing task completion time by 60%.",
-            "Built custom integrations with third-party APIs and designed a modular plugin architecture for extensibility.",
-            "Open-sourced key components, receiving positive community feedback and contributions."
+            "Specialized in AI training data mining, preparing and curating high-quality datasets for machine learning models.",
+            "Applied rigorous data analysis and quality assurance processes to ensure training data integrity.",
+            "Contributed to the development pipeline for AI systems requiring structured, reliable input data."
         ],
-        icon: "🤖"
+        icon: "⛏️"
+    },
+    {
+        title: "Independent Builder",
+        project: "Solo Projects",
+        type: "Self-Directed",
+        period: "2020 — Present",
+        description: [
+            "Self-taught development through YouTube, W3Schools, and Udemy — then applied knowledge to ship real-world products.",
+            "Built and shipped multiple projects including Audience (AI participation assistant), Nwoma (academic tool), Betify (MyHuzl), and Nita Stop The Bill.",
+            "Mastered building with AI, using modern tools to architect, build, and deploy full-stack applications at startup speed."
+        ],
+        icon: "🛠️"
     }
 ];
 
 export const education = [
     {
-        degree: "BSc Education",
-        school: "University of Technology",
+        degree: "BA Education, Psychology & Information Studies",
+        school: "University of Education",
         period: "2017 — 2021",
-        details: "Graduated with honors. Developed strong analytical, research, and communication skills that inform a thoughtful, user-first approach to software engineering."
+        details: "Majored in Education. Developed strong analytical, research, and communication skills that inform a thoughtful, user-first approach to software engineering and product design."
     },
     {
         degree: "Self-Taught Software Engineer",
-        school: "Continuous Learning",
+        school: "YouTube · W3Schools · Udemy",
         period: "2020 — Present",
-        details: "Built expertise in full-stack development through rigorous self-study, open-source contributions, and shipping real-world products. Technologies include React, Next.js, TypeScript, Node.js, and PostgreSQL."
+        details: "Built expertise in full-stack development through rigorous self-study and shipping real-world products. Mastered building with AI. Technologies include React, Next.js, TypeScript, Node.js, Python, and PostgreSQL."
     }
 ];
 

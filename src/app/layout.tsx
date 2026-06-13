@@ -1,16 +1,24 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: {
-    default: "Portfolio",
-    template: "%s | Portfolio",
+    default: "Eugene — Builder, Engineer, Founder",
+    template: "%s | Eugene",
   },
-  description: "Portfolio and blog.",
+  description:
+    "Self-taught Full-Stack Engineer and founder based in Accra, Ghana. Building products that matter — from social commerce to AI tools.",
 };
 
 export default function RootLayout({
@@ -27,7 +35,8 @@ export default function RootLayout({
       className={cx(
         "text-black bg-white dark:text-white dark:bg-black",
         GeistSans.variable,
-        GeistMono.variable
+        GeistMono.variable,
+        playfair.variable
       )}
       suppressHydrationWarning
     >

@@ -1,41 +1,90 @@
 [
     {
         "id": "1",
-        "title": "E-commerce Platform Redesign",
-        "category": "Web Development",
-        "description": "Led the complete frontend overhaul of a luxury retail platform, implementing server-side rendering with Next.js and Stripe integration for seamless checkout.",
-        "year": "2025",
+        "title": "For You Commerce",
+        "category": "Social Commerce",
+        "description": "A social commerce platform making commerce in the era of feeds trustworthy, scam-free, and seamless.",
+        "year": "2024",
         "tech": [
             "Next.js",
-            "Stripe",
-            "Tailwind CSS"
+            "Node.js",
+            "PostgreSQL"
         ],
-        "image": "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=800"
+        "url": "https://getforyu.com",
+        "image": "https://getforyu.com/og-image.png?v=3"
     },
     {
         "id": "2",
-        "title": "Analytics Dashboard",
-        "category": "UI/UX Engineering",
-        "description": "Designed and built a high-performance real-time analytics dashboard for enterprise clients, processing 2M+ data points daily with sub-200ms render times.",
+        "title": "SaaS Afric",
+        "category": "Developer Infrastructure",
+        "description": "Building the infrastructure layer for African SaaS founders and developers to scale globally.",
         "year": "2024",
         "tech": [
-            "React",
-            "D3.js",
-            "PostgreSQL"
+            "Next.js",
+            "TypeScript",
+            "Node.js"
         ],
-        "image": "https://images.unsplash.com/photo-1551288049-bbda38a594a1?auto=format&fit=crop&q=80&w=800"
+        "url": "https://saasafric.com",
+        "image": "https://image.thum.io/get/width/1280/crop/800/https://saasafric.com"
     },
     {
         "id": "3",
-        "title": "Digital Wallet Application",
-        "category": "Mobile Development",
-        "description": "Engineered a secure, intuitive mobile application for managing digital assets with biometric auth, real-time price feeds, and encrypted local storage.",
+        "title": "Audience",
+        "category": "AI Product",
+        "description": "An AI-powered participation assistant that helps builders show up confidently on X — a counselor, not a ghostwriter.",
+        "year": "2024",
+        "tech": [
+            "Chrome Extension",
+            "Node.js",
+            "React"
+        ],
+        "url": "https://audiance.it",
+        "image": "https://image.thum.io/get/width/1280/crop/800/https://audiance.it"
+    },
+    {
+        "id": "4",
+        "title": "Betify (MyHuzl)",
+        "category": "Marketplace",
+        "description": "Whop + Gumroad + Polymarket for Africa—a mobile and web marketplace where verified experts sell courses, live classes, signals, and professional services with built-in escrow and Mobile Money.",
         "year": "2024",
         "tech": [
             "React Native",
-            "Node.js",
-            "Firebase"
+            "Next.js",
+            "NestJS",
+            "PostgreSQL",
+            "Socket.IO",
+            "Agora.io",
+            "Mobile Money"
         ],
-        "image": "https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&q=80&w=800"
+        "url": "https://myhuzl.vercel.app",
+        "image": "https://myhuzl-course-uploads.s3.eu-north-1.amazonaws.com/general/596d62bb-7dcb-4638-a6c8-c2f7fa91e99f.JPG"
+    },
+    {
+        "id": "5",
+        "title": "Nwoma",
+        "category": "EdTech",
+        "description": "An academic tool for research papers, formatting, presentation slides, synthesized voice coaching, and synchronized teleprompter.",
+        "year": "2024",
+        "tech": [
+            "Next.js",
+            "ElevenLabs",
+            "TypeScript"
+        ],
+        "url": "https://nwoma.app",
+        "image": "https://image.thum.io/get/width/1280/crop/800/https://nwoma.app"
+    },
+    {
+        "id": "6",
+        "title": "Nita Stop The Bill",
+        "category": "Civic Tech",
+        "description": "A civic advocacy and tracking portal empowering citizens to engage with legislation that affects their lives.",
+        "year": "2024",
+        "tech": [
+            "Next.js",
+            "React",
+            "Vercel"
+        ],
+        "url": "https://nitastopthebill.vercel.app",
+        "image": "https://nitastopthebill.vercel.app/opengraph-image?2676ce3ef8da9b5a"
     }
 ]

@@ -2,6 +2,12 @@
 
 @theme {
   --font-serif: var(--font-playfair), Georgia, serif;
+  --animate-marquee: marquee 35s linear infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
 }
 
 
@@ -153,17 +159,6 @@ table {
 
 .title {
   text-wrap: balance;
-}
-
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 35s linear infinite;
 }
 
 .animate-marquee:hover {

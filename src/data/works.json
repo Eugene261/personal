@@ -4,49 +4,65 @@
         "title": "For You Commerce",
         "category": "Social Commerce",
         "description": "A social commerce platform making commerce in the era of feeds trustworthy, scam-free, and seamless.",
-        "year": "2024",
         "tech": [
             "Next.js",
             "Node.js",
             "PostgreSQL"
         ],
         "url": "https://getforyu.com",
-        "image": "https://getforyu.com/og-image.png?v=3"
+        "image": "https://getforyu.com/og-image.png?v=3",
+        "order": 0,
+        "year": "2025"
     },
     {
         "id": "2",
         "title": "SaaS Afric",
         "category": "Developer Infrastructure",
         "description": "Building the infrastructure layer for African SaaS founders and developers to scale globally.",
-        "year": "2024",
         "tech": [
             "Next.js",
             "TypeScript",
             "Node.js"
         ],
         "url": "https://saasafric.com",
-        "image": "https://image.thum.io/get/width/1280/crop/800/https://saasafric.com"
+        "order": 1,
+        "image": "https://saasafric.com/og-default.png",
+        "year": "2025"
     },
     {
-        "id": "3",
-        "title": "Audience",
-        "category": "AI Product",
-        "description": "An AI-powered participation assistant that helps builders show up confidently on X — a counselor, not a ghostwriter.",
+        "id": "6",
+        "title": "Stop the NITA Bill",
+        "category": "Civic Tech",
+        "description": "A privacy-first petition platform for Ghanaian tech professionals to oppose restrictive licensing and registration requirements.",
         "year": "2024",
         "tech": [
-            "Chrome Extension",
-            "Node.js",
-            "React"
+            "Next.js",
+            "React",
+            "Vercel"
         ],
-        "url": "https://audiance.it",
-        "image": "https://image.thum.io/get/width/1280/crop/800/https://audiance.it"
+        "url": "https://nitastopthebill.vercel.app",
+        "image": "https://nitastopthebill.vercel.app/opengraph-image?2676ce3ef8da9b5a",
+        "order": 2
+    },
+    {
+        "id": "5",
+        "title": "Nwoma",
+        "category": "EdTech",
+        "description": "An academic tool for research papers, formatting, presentation slides, synthesized voice coaching, and synchronized teleprompter.",
+        "tech": [
+            "Next.js",
+            "ElevenLabs",
+            "TypeScript"
+        ],
+        "url": "https://nwoma.app",
+        "order": 3,
+        "image": "/images/1781359982095-Screenshot__7783_.png",
+        "year": "2025"
     },
     {
         "id": "4",
         "title": "Betify (MyHuzl)",
         "category": "Marketplace",
-        "description": "Whop + Gumroad + Polymarket for Africa—a mobile and web marketplace where verified experts sell courses, live classes, signals, and professional services with built-in escrow and Mobile Money.",
-        "year": "2024",
         "tech": [
             "React Native",
             "Next.js",
@@ -57,34 +73,24 @@
             "Mobile Money"
         ],
         "url": "https://myhuzl.vercel.app",
-        "image": "https://myhuzl-course-uploads.s3.eu-north-1.amazonaws.com/general/596d62bb-7dcb-4638-a6c8-c2f7fa91e99f.JPG"
+        "order": 4,
+        "image": "/images/1781359955690-Screenshot__7782_.png",
+        "year": "2025",
+        "description": "A mobile and web marketplace where verified experts sell courses, live classes, signals, and professional services with built-in escrow and Mobile Money."
     },
     {
-        "id": "5",
-        "title": "Nwoma",
-        "category": "EdTech",
-        "description": "An academic tool for research papers, formatting, presentation slides, synthesized voice coaching, and synchronized teleprompter.",
-        "year": "2024",
+        "id": "3",
+        "title": "Audience",
+        "category": "AI Product",
+        "description": "An AI-powered participation assistant that helps builders show up confidently on X — a counselor, not a ghostwriter.",
         "tech": [
-            "Next.js",
-            "ElevenLabs",
-            "TypeScript"
+            "Chrome Extension",
+            "Node.js",
+            "React"
         ],
-        "url": "https://nwoma.app",
-        "image": "https://image.thum.io/get/width/1280/crop/800/https://nwoma.app"
-    },
-    {
-        "id": "6",
-        "title": "Nita Stop The Bill",
-        "category": "Civic Tech",
-        "description": "A civic advocacy and tracking portal empowering citizens to engage with legislation that affects their lives.",
-        "year": "2024",
-        "tech": [
-            "Next.js",
-            "React",
-            "Vercel"
-        ],
-        "url": "https://nitastopthebill.vercel.app",
-        "image": "https://nitastopthebill.vercel.app/opengraph-image?2676ce3ef8da9b5a"
+        "url": "https://audiance.it",
+        "order": 5,
+        "image": "/images/1781360005108-Screenshot__7775_.png",
+        "year": "2025"
     }
 ]

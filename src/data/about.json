@@ -70,30 +70,27 @@
     ],
     "skills": {
         "primary": [
-            "React",
-            "Next.js",
+            "Rust",
             "TypeScript",
-            "Node.js",
+            "JavaScript",
             "Tailwind CSS",
-            "PostgreSQL"
+            "Supabase",
+            "Node.js"
         ],
         "datascience": [
             "Python",
-            "NumPy",
             "Pandas",
+            "NumPy",
             "Scikit-Learn",
-            "Neural Networks",
-            "Random Forest"
+            "Jupyter Notebook"
         ],
         "secondary": [
-            "React Native",
+            "React",
+            "Next.js",
             "Docker",
             "AWS",
             "Firebase",
             "Prisma",
-            "OpenAI API",
-            "Framer Motion",
-            "Figma",
             "Git"
         ]
     },

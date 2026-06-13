@@ -64,16 +64,16 @@ export async function GET() {
   }
 
   // Construct top primary skills
-  const primarySkills = safeAbout.skills?.primary || ["React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS", "PostgreSQL"];
+  const primarySkills = safeAbout.skills?.primary || ["Rust", "TypeScript", "JavaScript", "Tailwind CSS", "Supabase", "Node.js"];
   
   // Construct dynamic layout for skills
   const skillPositions = [
-    { x: 0, y: 0, w: 65 },
-    { x: 73, y: 0, w: 85 },
-    { x: 166, y: 0, w: 95 },
-    { x: 0, y: 32, w: 80 },
-    { x: 88, y: 32, w: 65 },
-    { x: 161, y: 32, w: 80 }
+    { x: 0, y: 0, w: 55 },
+    { x: 63, y: 0, w: 90 },
+    { x: 161, y: 0, w: 85 },
+    { x: 0, y: 32, w: 100 },
+    { x: 108, y: 32, w: 80 },
+    { x: 196, y: 32, w: 65 }
   ];
 
   let skillsMarkup = "";

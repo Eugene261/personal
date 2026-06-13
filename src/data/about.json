@@ -13,7 +13,6 @@
         "role": "Founder / Full-Stack Engineer",
         "bio": "We learn to steer even in the storm.\nCEO & Founder at For You Commerce. Building the future of feed-based commerce."
     },
-
     "stats": [
         {
             "label": "Products Shipped",
@@ -110,8 +109,8 @@
         {
             "id": "1",
             "degree": "BA Education, Psychology & Information Studies",
-            "school": "University of Education",
-            "period": "2017 — 2021",
+            "school": "University of Ghana (Legon)",
+            "period": "2021 — 2024",
             "details": "Majored in Education. Developed strong analytical, research, and communication skills that inform a thoughtful, user-first approach to software engineering and product design."
         },
         {

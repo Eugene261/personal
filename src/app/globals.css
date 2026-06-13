@@ -2,7 +2,7 @@
 
 @theme {
   --font-serif: var(--font-playfair), Georgia, serif;
-  --animate-marquee: marquee 35s linear infinite;
+  --animate-marquee: marquee 80s linear infinite;
 
   @keyframes marquee {
     from { transform: translateX(0); }

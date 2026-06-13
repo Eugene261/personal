@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { verifyAuth, unauthorized } from "@/lib/auth";
+import { db } from "@/lib/firebase-admin";
+import { getBlogPosts } from "@/app/blog/utils";
 import fs from "fs";
 import path from "path";
 
@@ -24,24 +26,6 @@ function slugify(input: string) {
     .replace(/(^-|-$)+/g, "");
 }
 
-function parseFrontmatter(fileContent: string) {
-  const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
-  const match = frontmatterRegex.exec(fileContent);
-  const frontMatterBlock = match?.[1] ?? "";
-  const content = fileContent.replace(frontmatterRegex, "").trim();
-  const lines = frontMatterBlock.trim().split("\n").filter(Boolean);
-  const metadata: Partial<PostMetadata> = {};
-
-  lines.forEach((line) => {
-    const [key, ...valueArr] = line.split(": ");
-    let value = valueArr.join(": ").trim();
-    value = value.replace(/^['"](.*)['"]$/, "$1");
-    metadata[key.trim() as keyof PostMetadata] = value;
-  });
-
-  return { metadata: metadata as PostMetadata, content };
-}
-
 function toMdxFile(metadata: PostMetadata, content: string) {
   const fm = [
     "---",
@@ -58,21 +42,16 @@ function toMdxFile(metadata: PostMetadata, content: string) {
   return `${fm}\n${(content ?? "").trim()}\n`;
 }
 
-function listPosts() {
-  if (!fs.existsSync(POSTS_DIR)) return [];
-  const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".mdx"));
-  return files.map((file) => {
-    const slug = path.basename(file, ".mdx");
-    const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf-8");
-    const { metadata } = parseFrontmatter(raw);
-    return { slug, metadata };
-  });
-}
-
 export async function GET() {
   if (!(await verifyAuth())) return unauthorized();
   try {
-    return NextResponse.json({ posts: listPosts() });
+    const posts = await getBlogPosts();
+    // Return posts mapped to slug and metadata format expected by UI
+    const mapped = posts.map(p => ({
+      slug: p.slug,
+      metadata: p.metadata
+    }));
+    return NextResponse.json({ posts: mapped });
   } catch (e) {
     return NextResponse.json({ error: "Failed to list posts" }, { status: 500 });
   }
@@ -102,14 +81,32 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid slug" }, { status: 400 });
     }
 
-    fs.mkdirSync(POSTS_DIR, { recursive: true });
-    const filePath = path.join(POSTS_DIR, `${slug}.mdx`);
-    if (fs.existsSync(filePath)) {
+    // 1. Check if post exists in Firestore
+    const docRef = db.collection("blogs").doc(slug);
+    const docSnap = await docRef.get();
+    if (docSnap.exists) {
       return NextResponse.json({ error: "Post already exists" }, { status: 409 });
     }
 
-    const mdx = toMdxFile({ title, publishedAt, summary, image }, content);
-    fs.writeFileSync(filePath, mdx, "utf-8");
+    // 2. Save to Firestore
+    await docRef.set({
+      title,
+      publishedAt,
+      summary,
+      image: image || null,
+      content,
+      createdAt: new Date().toISOString(),
+    });
+
+    // 3. Optional local sync (fails gracefully on read-only filesystems like Vercel)
+    try {
+      fs.mkdirSync(POSTS_DIR, { recursive: true });
+      const filePath = path.join(POSTS_DIR, `${slug}.mdx`);
+      const mdx = toMdxFile({ title, publishedAt, summary, image }, content);
+      fs.writeFileSync(filePath, mdx, "utf-8");
+    } catch (fsErr) {
+      console.warn("[Local Sync Error] Failed to write local MDX file:", fsErr);
+    }
 
     return NextResponse.json({ success: true, slug });
   } catch (e) {

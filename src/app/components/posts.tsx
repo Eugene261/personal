@@ -1,8 +1,8 @@
 import { getBlogPosts } from "@/app/blog/utils";
 import BlogPostAccordion from "./BlogPostAccordion";
 
-export function BlogPosts() {
-  const allBlogs = getBlogPosts();
+export async function BlogPosts() {
+  const allBlogs = await getBlogPosts();
 
   // Sort blogs by published date descending
   const sortedBlogs = [...allBlogs].sort((a, b) => {

@@ -11,9 +11,12 @@ function escapeXml(unsafe: string) {
     .replaceAll("'", "&apos;");
 }
 
-export function GET() {
+export const dynamic = "force-dynamic";
+
+export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-  const posts = getBlogPosts().sort((a, b) =>
+  const allPosts = await getBlogPosts();
+  const posts = allPosts.sort((a, b) =>
     new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt) ? -1 : 1
   );
 

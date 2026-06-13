@@ -5,6 +5,7 @@ import ExperienceTimeline from "@/components/ExperienceTimeline";
 import ProfileImages from "@/components/ProfileImages";
 import ContactChat from "@/components/ContactChat";
 import TechMarquee from "@/components/TechMarquee";
+import SelectedWorksAccordion from "@/components/SelectedWorksAccordion";
 import aboutDataLocal from "@/data/about.json";
 import worksDataLocal from "@/data/works.json";
 
@@ -124,89 +125,7 @@ export default async function Home() {
         <h2 className="text-xs font-mono uppercase tracking-widest text-neutral-400 dark:text-neutral-600 mb-6">
           Selected Work
         </h2>
-        <div className="space-y-8">
-          {sortedWorks.map((work) => (
-            <div key={work.id ?? work.title} className="flex flex-row gap-4 sm:gap-5 items-start">
-              {work.image && (
-                work.url ? (
-                  <a
-                    href={work.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-24 sm:w-36 aspect-[16/10] sm:h-[90px] rounded-xl overflow-hidden shrink-0 border border-neutral-200/50 dark:border-neutral-800/50 bg-neutral-50 dark:bg-neutral-900/50 shadow-sm relative group block"
-                  >
-                    <img
-                      src={work.image}
-                      alt={work.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </a>
-                ) : (
-                  <div className="w-24 sm:w-36 aspect-[16/10] sm:h-[90px] rounded-xl overflow-hidden shrink-0 border border-neutral-200/50 dark:border-neutral-800/50 bg-neutral-50 dark:bg-neutral-900/50 shadow-sm relative group">
-                    <img
-                      src={work.image}
-                      alt={work.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </div>
-                )
-              )}
-              <div className="flex-1 min-w-0 w-full flex flex-col gap-1.5">
-                <div className="flex items-baseline justify-between">
-                  <div className="flex items-baseline gap-2">
-                    {work.url ? (
-                      <a
-                        href={work.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-medium text-neutral-900 dark:text-neutral-100 hover:underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-700 transition-all"
-                      >
-                        {work.title}
-                      </a>
-                    ) : (
-                      <span className="font-medium text-neutral-900 dark:text-neutral-100">
-                        {work.title}
-                      </span>
-                    )}
-                    <span className="text-xs text-neutral-400 dark:text-neutral-500 font-mono">
-                      ({work.category})
-                    </span>
-                    {work.url && (
-                      <a
-                        href={work.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs text-neutral-400 dark:text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-100 font-mono transition-colors inline-flex items-center gap-0.5 ml-1"
-                      >
-                        • visit ↗
-                      </a>
-                    )}
-                  </div>
-                  <span className="text-sm font-mono text-neutral-400 dark:text-neutral-500 tabular-nums">
-                    {work.year}
-                  </span>
-                </div>
-                <p className="text-sm text-neutral-650 dark:text-neutral-350 leading-relaxed">
-                  {work.description}
-                </p>
-                {Array.isArray(work.tech) && (
-                  <div className="flex flex-wrap gap-1.5 mt-0.5">
-                    {work.tech.map((t: string) => (
-                      <span
-                        key={t}
-                        className="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-900 text-neutral-500 dark:text-neutral-400"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
+        <SelectedWorksAccordion works={sortedWorks} />
       </section>
 
       {/* Experience Section */}

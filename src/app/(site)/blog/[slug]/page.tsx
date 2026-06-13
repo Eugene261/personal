@@ -3,8 +3,10 @@ import { CustomMDX } from "@/app/components/mdx";
 import { getBlogPosts } from "@/app/blog/utils";
 import { formatDate } from "@/app/blog/formatDate";
 
+export const dynamic = "force-dynamic";
+
 export async function generateStaticParams() {
-  const posts = getBlogPosts();
+  const posts = await getBlogPosts();
   return posts.map((post) => ({ slug: post.slug }));
 }
 
@@ -14,7 +16,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getBlogPosts().find((p) => p.slug === slug);
+  const posts = await getBlogPosts();
+  const post = posts.find((p) => p.slug === slug);
   if (!post) return;
 
   const { title, publishedAt, summary, image } = post.metadata;
@@ -46,7 +49,8 @@ export default async function Blog({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getBlogPosts().find((p) => p.slug === slug);
+  const posts = await getBlogPosts();
+  const post = posts.find((p) => p.slug === slug);
   if (!post) notFound();
 
   return (

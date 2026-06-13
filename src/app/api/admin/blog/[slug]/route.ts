@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { verifyAuth, unauthorized } from "@/lib/auth";
+import { db } from "@/lib/firebase-admin";
 import fs from "fs";
 import path from "path";
 
@@ -56,6 +57,28 @@ export async function GET(
   if (!(await verifyAuth())) return unauthorized();
 
   const { slug } = await params;
+
+  // 1. Try Firestore first
+  try {
+    const docSnap = await db.collection("blogs").doc(slug).get();
+    if (docSnap.exists) {
+      const data = docSnap.data();
+      return NextResponse.json({
+        slug,
+        metadata: {
+          title: data?.title || "",
+          publishedAt: data?.publishedAt || "",
+          summary: data?.summary || "",
+          image: data?.image || undefined,
+        },
+        content: data?.content || "",
+      });
+    }
+  } catch (dbErr) {
+    console.warn("[Firebase Error] GET blog post failed:", dbErr);
+  }
+
+  // 2. Fallback to local files
   const filePath = path.join(POSTS_DIR, `${slug}.mdx`);
   if (!fs.existsSync(filePath)) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
@@ -73,8 +96,12 @@ export async function PUT(
   if (!(await verifyAuth())) return unauthorized();
 
   const { slug } = await params;
+
+  // Verify post exists in Firestore or locally
+  const docRef = db.collection("blogs").doc(slug);
+  const docSnap = await docRef.get();
   const filePath = path.join(POSTS_DIR, `${slug}.mdx`);
-  if (!fs.existsSync(filePath)) {
+  if (!docSnap.exists && !fs.existsSync(filePath)) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 
@@ -93,8 +120,23 @@ export async function PUT(
       );
     }
 
-    const mdx = toMdxFile({ title, publishedAt, summary, image }, content);
-    fs.writeFileSync(filePath, mdx, "utf-8");
+    // 1. Save to Firestore
+    await docRef.set({
+      title,
+      publishedAt,
+      summary,
+      image: image || null,
+      content,
+      updatedAt: new Date().toISOString(),
+    }, { merge: true });
+
+    // 2. Optional local sync (fails gracefully on read-only filesystems like Vercel)
+    try {
+      const mdx = toMdxFile({ title, publishedAt, summary, image }, content);
+      fs.writeFileSync(filePath, mdx, "utf-8");
+    } catch (fsErr) {
+      console.warn("[Local Sync Error] Failed to update local MDX file:", fsErr);
+    }
 
     return NextResponse.json({ success: true, slug });
   } catch (e) {
@@ -109,13 +151,21 @@ export async function DELETE(
   if (!(await verifyAuth())) return unauthorized();
 
   const { slug } = await params;
-  const filePath = path.join(POSTS_DIR, `${slug}.mdx`);
-  if (!fs.existsSync(filePath)) {
-    return NextResponse.json({ error: "Not found" }, { status: 404 });
-  }
 
   try {
-    fs.unlinkSync(filePath);
+    // 1. Delete from Firestore
+    await db.collection("blogs").doc(slug).delete();
+
+    // 2. Optional local sync delete (fails gracefully on Vercel)
+    try {
+      const filePath = path.join(POSTS_DIR, `${slug}.mdx`);
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+      }
+    } catch (fsErr) {
+      console.warn("[Local Sync Error] Failed to delete local MDX file:", fsErr);
+    }
+
     return NextResponse.json({ success: true });
   } catch (e) {
     return NextResponse.json({ error: "Failed to delete post" }, { status: 500 });

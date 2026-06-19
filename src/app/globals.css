@@ -167,6 +167,19 @@ table {
 
 /* Print Overrides for Industry-Standard Resumes */
 @media print {
+  /* Hide default browser header/footer (title, date, URL) by setting page margin to 0 */
+  @page {
+    size: letter;
+    margin: 0 !important;
+  }
+
+  /* Add padding to the body to simulate standard margins (0.5in top/bottom, 0.6in sides) */
+  body {
+    padding: 0.5in 0.6in !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
   /* Default print styling: light theme */
   body:not(.print-dark), html:not(.print-dark) {
     background-color: white !important;
@@ -207,10 +220,5 @@ table {
   .print-avoid-break {
     page-break-inside: avoid;
     break-inside: avoid;
-  }
-
-  @page {
-    size: letter;
-    margin: 0.5in 0.6in 0.5in 0.6in;
   }
 }

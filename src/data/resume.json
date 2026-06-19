@@ -10,12 +10,62 @@
         "linkedin": "https://www.linkedin.com/in/eugene-opoku-243601392",
         "summary": "We learn to steer even in the storm.\nCEO & Founder at For You Commerce. Building the future of feed-based commerce."
     },
-    "experiences": {},
+    "experiences": {
+        "3": {
+            "included": true,
+            "title": "Data Mining Specialist",
+            "project": "Blask",
+            "period": "March 2026 - June 2026",
+            "description": [
+                "Specialized in AI training data mining, preparing and curating high-quality datasets for machine learning models.",
+                "Applied rigorous data analysis and quality assurance processes to ensure training data integrity.",
+                "Contributed to the development pipeline for AI systems requiring structured, reliable input data."
+            ]
+        }
+    },
     "education": {},
-    "projects": {},
+    "projects": {
+        "4": {
+            "included": true,
+            "title": "MyHuzl",
+            "role": "Founder & Full-Stack Engineer",
+            "description": "A mobile and web marketplace where verified experts sell courses, live classes, signals, and professional services with built-in escrow and Mobile Money.",
+            "tech": [
+                "React Native",
+                "Next.js",
+                "NestJS",
+                "PostgreSQL",
+                "Socket.IO",
+                "Agora.io"
+            ],
+            "url": "https://myhuzl.vercel.app"
+        }
+    },
     "skills": {
-        "primary": [],
-        "datascience": [],
-        "secondary": []
+        "primary": [
+            "Javascript",
+            "Nodejs",
+            "Reactjs",
+            "Rust",
+            "Python",
+            "Expressjs",
+            "Tailwindcss",
+            "React Native",
+            "Nextjs",
+            "Typescript"
+        ],
+        "datascience": [
+            "Scikit Learn",
+            "Pandas",
+            "TensorFlow",
+            "NumPy",
+            "Jupyter Notebook"
+        ],
+        "secondary": [
+            "Postgress SQL",
+            "MongoDb",
+            "Supabase",
+            "Prisma"
+        ]
     }
 }

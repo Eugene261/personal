@@ -164,3 +164,36 @@ table {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* Print Overrides for Industry-Standard Resumes */
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+  
+  html, body {
+    width: 100%;
+    height: auto;
+    background: white !important;
+    color: black !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-avoid-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  @page {
+    size: letter;
+    margin: 0.5in 0.6in 0.5in 0.6in;
+  }
+}

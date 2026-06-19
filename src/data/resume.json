@@ -1,0 +1,21 @@
+{
+    "basics": {
+        "name": "",
+        "label": "",
+        "email": "",
+        "phone": "",
+        "location": "",
+        "website": "",
+        "github": "",
+        "linkedin": "",
+        "summary": ""
+    },
+    "experiences": {},
+    "education": {},
+    "projects": {},
+    "skills": {
+        "primary": [],
+        "datascience": [],
+        "secondary": []
+    }
+}

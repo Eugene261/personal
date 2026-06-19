@@ -21,6 +21,9 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
           <Link href="/about" className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
             about
           </Link>
+          <Link href="/resume" className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
+            resume
+          </Link>
           <Link href="/contact" className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
             contact
           </Link>

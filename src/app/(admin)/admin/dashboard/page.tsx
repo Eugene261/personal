@@ -9,14 +9,16 @@ import {
   UserIcon,
   PencilSquareIcon,
   ChatBubbleLeftRightIcon,
+  DocumentTextIcon,
 } from "@heroicons/react/24/outline";
 import WorksManager from "@/components/admin/WorksManager";
 import ServicesManager from "@/components/admin/ServicesManager";
 import AboutManager from "@/components/admin/AboutManager";
 import BlogManager from "@/components/admin/BlogManager";
 import ContactsManager from "@/components/admin/ContactsManager";
+import ResumeManager from "@/components/admin/ResumeManager";
 
-type Tab = "works" | "services" | "about" | "blog" | "contacts";
+type Tab = "works" | "services" | "about" | "blog" | "contacts" | "resume";
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>("works");
@@ -34,6 +36,7 @@ export default function AdminDashboard() {
     { id: "about", label: "About", icon: <UserIcon className="h-4 w-4" /> },
     { id: "blog", label: "Blog", icon: <PencilSquareIcon className="h-4 w-4" /> },
     { id: "contacts", label: "Messages", icon: <ChatBubbleLeftRightIcon className="h-4 w-4" /> },
+    { id: "resume", label: "Resume", icon: <DocumentTextIcon className="h-4 w-4" /> },
   ];
 
   return (
@@ -79,6 +82,7 @@ export default function AdminDashboard() {
           {activeTab === "about" ? <AboutManager /> : null}
           {activeTab === "blog" ? <BlogManager /> : null}
           {activeTab === "contacts" ? <ContactsManager /> : null}
+          {activeTab === "resume" ? <ResumeManager /> : null}
         </section>
       </div>
     </div>

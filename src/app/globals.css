@@ -167,16 +167,33 @@ table {
 
 /* Print Overrides for Industry-Standard Resumes */
 @media print {
-  body {
+  /* Default print styling: light theme */
+  body:not(.print-dark), html:not(.print-dark) {
     background-color: white !important;
     color: black !important;
   }
+
+  /* Dark mode print styling */
+  body.print-dark, html.print-dark {
+    background-color: #0c0a09 !important; /* Stone 950 dark */
+    color: #f5f5f4 !important; /* Stone 100 light */
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Ensure card adapts in print dark mode */
+  body.print-dark article {
+    background-color: #0c0a09 !important;
+    color: #f5f5f4 !important;
+    border-color: #1c1917 !important; /* Stone 900 */
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
   
-  html, body {
-    width: 100%;
-    height: auto;
-    background: white !important;
+  body:not(.print-dark) article {
+    background-color: white !important;
     color: black !important;
+    border: 0 !important;
   }
 
   .no-print {

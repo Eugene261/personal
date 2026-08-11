@@ -10,8 +10,8 @@
     "hero": {
         "greeting": "Hi, I'm",
         "name": "Eugene",
-        "role": "Founder / Full-Stack Engineer",
-        "bio": "We learn to steer even in the storm.\nCEO & Founder at For You Commerce. Building the future of feed-based commerce."
+        "role": "Full-Stack Software Engineer · Founder",
+        "bio": "I design, build, and ship production web and mobile products end-to-end.\nFounder at For You Commerce. Open to remote engineering roles — any timezone."
     },
     "stats": [
         {
@@ -101,7 +101,7 @@
         },
         {
             "label": "Status",
-            "value": "Founder & Builder"
+            "value": "Open to remote roles"
         },
         {
             "label": "Specialty",
@@ -142,6 +142,7 @@
             "title": "Founder, CEO & Full-Stack Engineer",
             "project": "For You Commerce",
             "type": "Startup",
+            "url": "https://getforyu.com",
             "period": "2025 — Present",
             "description": [
                 "Founded and built a social commerce platform making commerce in the era of feeds trustworthy, scam-free, and seamless.",

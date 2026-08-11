@@ -1,35 +1,104 @@
 {
     "basics": {
         "name": "Eugene Opoku",
-        "label": "Founder / Full-Stack Engineer",
+        "label": "Full-Stack Software Engineer · AI Product Engineer",
         "email": "eugeneopoku74@gmail.com",
         "phone": "",
         "location": "Accra, Ghana",
         "website": "https://704-labz.vercel.app",
         "github": "https://github.com/Eugene261",
         "linkedin": "https://www.linkedin.com/in/eugene-opoku-243601392",
-        "summary": "We learn to steer even in the storm.\nCEO & Founder at For You Commerce. Building the future of feed-based commerce."
+        "summary": "Full-stack software engineer who designs, builds, and ships complete production web and mobile products end-to-end — payments, escrow, real-time messaging, and AI integrations — using TypeScript, React/Next.js, React Native, Node.js, and PostgreSQL. Founder of For You Commerce; comfortable owning a product from architecture to deployment and working remotely across any time zone."
     },
     "experiences": {
+        "1": {
+            "included": true,
+            "title": "Founder & Full-Stack Engineer",
+            "project": "For You Commerce",
+            "period": "2025 - Present",
+            "url": "https://getforyu.com",
+            "description": [
+                "Architected and built a social commerce platform end-to-end as a solo engineer using Next.js, Node.js, and PostgreSQL — covering vendor storefronts, escrow-based payments, and real-time messaging.",
+                "Onboarded 20 vendors and 67 early users during pre-launch while iterating toward public release.",
+                "Own the full lifecycle: product strategy, system architecture, implementation, deployment, and infrastructure."
+            ]
+        },
+        "2": {
+            "included": false
+        },
         "3": {
             "included": true,
-            "title": "Data Mining Specialist",
+            "title": "AI Training Data Specialist (Remote)",
             "project": "Blask",
             "period": "March 2026 - June 2026",
             "description": [
-                "Specialized in AI training data mining, preparing and curating high-quality datasets for machine learning models.",
-                "Applied rigorous data analysis and quality assurance processes to ensure training data integrity.",
-                "Contributed to the development pipeline for AI systems requiring structured, reliable input data."
+                "Annotated and curated image datasets for computer-vision model training on a fully remote, asynchronous team.",
+                "Sustained high-volume daily throughput (12+ hour workdays) while maintaining strict quality-assurance standards for training data integrity.",
+                "Gained first-hand insight into the data pipeline behind production ML systems."
             ]
+        },
+        "4": {
+            "included": false
         }
     },
-    "education": {},
+    "education": {
+        "1": {
+            "included": true,
+            "degree": "BA Education, Psychology & Information Studies",
+            "school": "University of Ghana, Legon",
+            "period": "2021 - 2024",
+            "details": "Developed strong analytical, research, and communication skills applied daily to software engineering and product design."
+        },
+        "2": {
+            "included": false
+        }
+    },
     "projects": {
+        "1": {
+            "included": false
+        },
+        "2": {
+            "included": true,
+            "title": "SaaS Afric",
+            "role": "Creator & Engineer",
+            "description": "Building developer infrastructure and tools for African SaaS founders to launch, process global payments, and scale internationally.",
+            "tech": [
+                "Next.js",
+                "TypeScript",
+                "Node.js"
+            ],
+            "url": "https://saasafric.com"
+        },
+        "6": {
+            "included": true,
+            "title": "Stop the NITA Bill",
+            "role": "Creator & Engineer",
+            "description": "A privacy-first civic petition platform for Ghanaian tech professionals that gathered 6,997 signatures opposing restrictive tech licensing legislation.",
+            "tech": [
+                "Next.js",
+                "React",
+                "TypeScript",
+                "Vercel"
+            ],
+            "url": "https://nitastopthebill.vercel.app"
+        },
+        "5": {
+            "included": true,
+            "title": "Nwoma",
+            "role": "Creator & Engineer",
+            "description": "An academic toolkit for research papers, formatting, presentation slides, AI-synthesized voice coaching, and a synchronized teleprompter.",
+            "tech": [
+                "Next.js",
+                "TypeScript",
+                "ElevenLabs API"
+            ],
+            "url": "https://nwoma.app"
+        },
         "4": {
             "included": true,
             "title": "MyHuzl",
-            "role": "Founder & Full-Stack Engineer",
-            "description": "A mobile and web marketplace where verified experts sell courses, live classes, signals, and professional services with built-in escrow and Mobile Money.",
+            "role": "Creator & Engineer",
+            "description": "A mobile and web marketplace where verified experts sell courses, live classes, and professional services — with built-in escrow, Mobile Money payments, real-time chat, and live video sessions.",
             "tech": [
                 "React Native",
                 "Next.js",
@@ -39,33 +108,44 @@
                 "Agora.io"
             ],
             "url": "https://myhuzl.vercel.app"
+        },
+        "3": {
+            "included": true,
+            "title": "Audience",
+            "role": "Creator & Engineer",
+            "description": "An AI-powered participation assistant (Chrome extension) that coaches builders to show up confidently on X using LLM-driven suggestions.",
+            "tech": [
+                "Chrome Extension",
+                "React",
+                "Node.js",
+                "LLM APIs"
+            ],
+            "url": "https://audiance.it"
         }
     },
     "skills": {
         "primary": [
-            "Javascript",
-            "Nodejs",
-            "Reactjs",
-            "Rust",
-            "Python",
-            "Expressjs",
-            "Tailwindcss",
+            "TypeScript",
+            "JavaScript",
+            "SQL",
+            "React",
+            "Next.js",
             "React Native",
-            "Nextjs",
-            "Typescript"
+            "Node.js",
+            "NestJS",
+            "Express",
+            "Tailwind CSS"
         ],
-        "datascience": [
-            "Scikit Learn",
-            "Pandas",
-            "TensorFlow",
-            "NumPy",
-            "Jupyter Notebook"
-        ],
+        "datascience": [],
         "secondary": [
-            "Postgress SQL",
-            "MongoDb",
+            "PostgreSQL",
+            "MongoDB",
+            "Prisma",
+            "Firebase",
             "Supabase",
-            "Prisma"
+            "Vercel",
+            "Socket.IO",
+            "Git"
         ]
     }
 }

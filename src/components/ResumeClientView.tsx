@@ -13,6 +13,7 @@ type Props = {
     website: string;
     github: string;
     linkedin: string;
+    summary?: string;
   };
   experiences: any[];
   projects: any[];
@@ -146,6 +147,12 @@ export default function ResumeClientView({ basics, experiences, projects, educat
             </div>
           </div>
 
+          {basics.summary && (
+            <p className={`mt-4 text-xs leading-relaxed ${themeClasses.itemDetails}`}>
+              {basics.summary}
+            </p>
+          )}
+
           {/* Contact Details 2-Column Grid */}
           <div className={`mt-5 grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-6 text-xs font-mono ${themeClasses.contactText}`}>
             {basics.location && (
@@ -220,15 +227,50 @@ export default function ResumeClientView({ basics, experiences, projects, educat
               {experiences.map((exp: any) => (
                 <div key={exp.id} className="print-avoid-break">
                   <div className="flex justify-between items-baseline">
-                    <h3 className={`text-[13px] font-bold ${themeClasses.itemTitle}`}>
-                      {exp.title}
-                    </h3>
+                    <div className="flex items-baseline gap-1.5">
+                      <h3 className={`text-[13px] font-bold ${themeClasses.itemTitle}`}>
+                        {exp.title}
+                      </h3>
+                      {exp.url && (
+                        <a
+                          href={exp.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`inline-flex items-center gap-1 text-[10px] hover:underline ${themeClasses.contactText}`}
+                          title={exp.url}
+                        >
+                          <svg className="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                            <polyline points="15 3 21 3 21 9" />
+                            <line x1="10" y1="14" x2="21" y2="3" />
+                          </svg>
+                          <span>{getCleanUrlDisplay(exp.url)}</span>
+                        </a>
+                      )}
+                    </div>
                     <span className={`text-[11px] font-mono ${themeClasses.itemPeriod}`}>
                       {exp.period}
                     </span>
                   </div>
                   <div className={`text-xs font-semibold italic mt-0.5 ${themeClasses.itemSubtitle}`}>
-                    {exp.project} {exp.type ? `• ${exp.type}` : ""}
+                    {exp.url ? (
+                      <a
+                        href={exp.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline inline-flex items-center gap-1 text-emerald-700 dark:text-emerald-400"
+                      >
+                        {exp.project}
+                        <svg className="w-2.5 h-2.5 shrink-0 opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                          <polyline points="15 3 21 3 21 9" />
+                          <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                      </a>
+                    ) : (
+                      exp.project
+                    )}{" "}
+                    {exp.type ? `• ${exp.type}` : ""}
                   </div>
                   
                   {Array.isArray(exp.description) && exp.description.length > 0 && (
@@ -254,9 +296,27 @@ export default function ResumeClientView({ basics, experiences, projects, educat
               {projects.map((proj: any) => (
                 <div key={proj.id} className="print-avoid-break">
                   <div className="flex justify-between items-baseline">
-                    <h3 className={`text-[13px] font-bold ${themeClasses.itemTitle}`}>
-                      {proj.title}
-                    </h3>
+                    <div className="flex items-baseline gap-1.5">
+                      <h3 className={`text-[13px] font-bold ${themeClasses.itemTitle}`}>
+                        {proj.title}
+                      </h3>
+                      {proj.url && (
+                        <a
+                          href={proj.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`inline-flex items-center gap-0.5 text-[10px] hover:underline ${themeClasses.contactText}`}
+                          title={proj.url}
+                        >
+                          <svg className="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                            <polyline points="15 3 21 3 21 9" />
+                            <line x1="10" y1="14" x2="21" y2="3" />
+                          </svg>
+                          <span className="print-show-url">{getCleanUrlDisplay(proj.url)}</span>
+                        </a>
+                      )}
+                    </div>
                     {proj.year && (
                       <span className={`text-[11px] font-mono ${themeClasses.itemPeriod}`}>
                         {proj.year}

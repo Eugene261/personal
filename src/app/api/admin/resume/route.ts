@@ -9,12 +9,47 @@ export const dynamic = "force-dynamic";
 const COLLECTION = "content";
 const DOCUMENT = "resume";
 
+import resumeDataLocal from "@/data/resume.json";
+
 export async function GET() {
     try {
-        const resumeData = await getDocument(COLLECTION, DOCUMENT);
-        return NextResponse.json(resumeData || {});
+        const resumeData = await getDocument<any>(COLLECTION, DOCUMENT);
+        const mergedProjects = {
+            ...resumeDataLocal.projects,
+            ...resumeData?.projects,
+        };
+        if (resumeDataLocal.projects?.["2"]?.included) {
+            mergedProjects["2"] = {
+                ...(resumeDataLocal.projects as any)["2"],
+                ...(resumeData?.projects?.["2"] || {}),
+                included: true,
+            };
+        }
+
+        const merged = {
+            ...resumeDataLocal,
+            ...resumeData,
+            basics: {
+                ...resumeDataLocal.basics,
+                ...resumeData?.basics,
+            },
+            projects: mergedProjects,
+            experiences: {
+                ...resumeDataLocal.experiences,
+                ...resumeData?.experiences,
+            },
+            education: {
+                ...resumeDataLocal.education,
+                ...resumeData?.education,
+            },
+            skills: {
+                ...resumeDataLocal.skills,
+                ...resumeData?.skills,
+            },
+        };
+        return NextResponse.json(merged);
     } catch (error) {
-        return NextResponse.json({ error: "Failed to fetch resume config" }, { status: 500 });
+        return NextResponse.json(resumeDataLocal || {});
     }
 }
 

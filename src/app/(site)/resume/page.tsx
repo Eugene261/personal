@@ -20,7 +20,31 @@ export default async function ResumePage() {
 
   const safeAbout = aboutData || aboutDataLocal || {};
   const safeWorks = Array.isArray(worksData) && worksData.length > 0 ? worksData : worksDataLocal;
-  const safeResume = resumeData || resumeDataLocal || {};
+  const safeResumeProjects = {
+    ...resumeDataLocal.projects,
+    ...resumeData?.projects,
+  };
+  if ((resumeDataLocal.projects as any)?.["2"]?.included) {
+    safeResumeProjects["2"] = {
+      ...(resumeDataLocal.projects as any)["2"],
+      ...(resumeData?.projects?.["2"] || {}),
+      included: true,
+    };
+  }
+
+  const safeResume = {
+    ...resumeDataLocal,
+    ...resumeData,
+    basics: {
+      ...resumeDataLocal.basics,
+      ...resumeData?.basics,
+    },
+    projects: safeResumeProjects,
+    experiences: {
+      ...resumeDataLocal.experiences,
+      ...resumeData?.experiences,
+    },
+  };
 
   // 1. Merge Basics
   const basics = {
@@ -32,25 +56,43 @@ export default async function ResumePage() {
     website: safeResume?.basics?.website || "https://704-labz.vercel.app",
     github: safeResume?.basics?.github || "https://github.com/Eugene261",
     linkedin: safeResume?.basics?.linkedin || "https://www.linkedin.com/in/eugene-opoku-243601392",
+    summary: safeResume?.basics?.summary || "",
   };
 
   // 2. Merge Experiences
   const experiences = (safeAbout.experiences || [])
     .map((exp: any) => {
       const override = safeResume.experiences?.[exp.id];
+      const localExp = (aboutDataLocal.experiences || []).find((e: any) => e.id === exp.id);
+      const localResumeExp = (resumeDataLocal.experiences as any)?.[exp.id];
+      
+      const projectName = override?.project || exp.project;
+      const matchedWork = (safeWorks || []).find(
+        (w: any) => w.title?.toLowerCase().trim() === projectName?.toLowerCase().trim()
+      );
+      
+      const resolvedUrl = 
+        override?.url ||
+        exp?.url ||
+        localResumeExp?.url ||
+        localExp?.url ||
+        matchedWork?.url ||
+        "";
+
       if (override) {
         return {
           ...exp,
           included: override.included !== false,
           title: override.title || exp.title,
-          project: override.project || exp.project,
+          project: projectName,
           period: override.period || exp.period,
+          url: resolvedUrl,
           description: Array.isArray(override.description) && override.description.length > 0 
             ? override.description.filter(Boolean)
             : exp.description,
         };
       }
-      return { ...exp, included: true };
+      return { ...exp, included: true, project: projectName, url: resolvedUrl };
     })
     .filter((exp: any) => exp.included);
 
@@ -66,19 +108,28 @@ export default async function ResumePage() {
 
   const projects = sortedWorks
     .map((proj: any) => {
-      const override = safeResume.projects?.[proj.id];
+      const cloudOverride = safeResume.projects?.[proj.id];
+      const localOverride = (resumeDataLocal.projects as any)?.[proj.id];
+      const override = cloudOverride || localOverride;
+
+      const isIncluded = cloudOverride?.included !== undefined 
+        ? cloudOverride.included !== false 
+        : localOverride?.included !== undefined 
+          ? localOverride.included !== false 
+          : true;
+
       if (override) {
         return {
           ...proj,
-          included: override.included !== false,
+          included: isIncluded,
           title: override.title || proj.title,
-          role: override.role || "Founder & Full-Stack Engineer",
+          role: override.role || "Creator & Engineer",
           description: override.description || proj.description,
           tech: Array.isArray(override.tech) && override.tech.length > 0 ? override.tech : proj.tech,
           url: override.url || proj.url,
         };
       }
-      return { ...proj, included: true, role: "Founder & Full-Stack Engineer" };
+      return { ...proj, included: true, role: "Creator & Engineer" };
     })
     .filter((proj: any) => proj.included);
 

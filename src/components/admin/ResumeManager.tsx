@@ -165,6 +165,7 @@ export default function ResumeManager() {
       project: exp.project,
       period: exp.period,
       description: exp.description,
+      url: "",
     };
     setResumeConfig({
       ...resumeConfig,
@@ -185,6 +186,7 @@ export default function ResumeManager() {
       project: exp.project,
       period: exp.period,
       description: exp.description,
+      url: "",
     };
     setResumeConfig({
       ...resumeConfig,
@@ -585,6 +587,17 @@ export default function ResumeManager() {
                               className="w-full bg-transparent border border-neutral-200 dark:border-neutral-800 rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-500"
                             />
                           </div>
+                        </div>
+
+                        <div className="space-y-1">
+                          <label className="text-[10px] font-bold uppercase tracking-wider text-neutral-400">Link URL (shown beside title on resume)</label>
+                          <input
+                            type="text"
+                            value={override.url || ""}
+                            onChange={(e) => updateExperienceOverride(exp.id, "url", e.target.value, exp)}
+                            placeholder="https://github.com/... or https://company.com"
+                            className="w-full bg-transparent border border-neutral-200 dark:border-neutral-800 rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-500"
+                          />
                         </div>
 
                         <div className="space-y-1">
